@@ -42,3 +42,24 @@ url = "http://localhost:8000/o/token/"
 payload = {'refresh_token': 'vaule_of_refresh_token',
 '': '',
 'grant_type': 'refresh_token'}
+
+
+
+####
+import requests
+
+url = "http://localhost:8000/oauth/revoke_token/"
+
+payload = {'': '',
+'token': 'token',
+'': ''}
+files = [
+
+]
+headers = {
+  'Authorization': 'Basic MTIzNDU2OjEyMzQ1Ng=='
+}
+
+response = requests.request("POST", url, headers=headers, data = payload, files = files)
+
+print(response.text.encode('utf8'))
