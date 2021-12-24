@@ -38,6 +38,9 @@ headers = {
 #### refresh token
 
 url = "http://localhost:8000/o/token/"
+headers = {
+  'Authorization': 'Basic id-client:secret-client',###Basic_64_encoded_code
+}
 
 payload = {'refresh_token': 'vaule_of_refresh_token',
 '': '',
@@ -63,3 +66,44 @@ headers = {
 response = requests.request("POST", url, headers=headers, data = payload, files = files)
 
 print(response.text.encode('utf8'))
+
+
+
+
+#####refresh token
+import requests
+
+url = "http://localhost:8000/oauth/token/"
+
+payload = {'refresh_token': 'refresh_token',
+'': '',
+'grant_type': 'refresh_token'}
+files = [
+
+]
+headers = {
+  'Authorization': 'Basic g=='
+}
+
+response = requests.request("POST", url, headers=headers, data = payload, files = files)
+
+print(response.text.encode('utf8'))
+#####logout
+import requests
+
+url = "http://localhost:8000/oauth/revoke_token/"
+
+payload = {'': '',
+'token': 'token',
+'': ''}
+files = [
+
+]
+headers = {
+  'Authorization': 'Basic =='
+}
+
+response = requests.request("POST", url, headers=headers, data = payload, files = files)
+
+print(response.text.encode('utf8'))
+
